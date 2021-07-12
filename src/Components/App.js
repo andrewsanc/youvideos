@@ -1,13 +1,22 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import youtube from '../APIs/youtube';
 import './App.css';
 
-console.log(process.env.REACT_APP_YOUTUBE_API_KEY)
-
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      videos: []
+    }
+  }
 
-  onTermSubmit = (term) => {
-    console.log(term)
+  onTermSubmit = async (term) => {
+    const response = await youtube.get('/search', {
+      q: term,
+    });
+
+    this.setState({ videos: response.data.items });
   }
   
   render() {

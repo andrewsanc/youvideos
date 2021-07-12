@@ -5,12 +5,16 @@ import './App.css';
 console.log(process.env.REACT_APP_YOUTUBE_API_KEY)
 
 class App extends React.Component {
+
+  onTermSubmit = (term) => {
+    console.log(term)
+  }
   
   render() {
 
     return (
       <div className='ui container'>
-        <SearchBar />
+        <SearchBar onFormSubmit={this.onTermSubmit} />
       </div>
     )
   }

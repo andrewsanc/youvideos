@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null,
     }
   }
 
@@ -19,13 +20,17 @@ class App extends React.Component {
 
     this.setState({ videos: response.data.items });
   }
+
+  onVideoSelect = (selectedVideo) => {
+    console.log(selectedVideo)
+  }
   
   render() {
 
     return (
       <div className='ui container'>
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <VideoList videos={this.state.videos} />
+        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
       </div>
     )
   }

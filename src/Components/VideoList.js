@@ -1,8 +1,8 @@
 import React from "react";
 import VideoItem from "./VideoItem";
 
-const VideoList = ({ videos, onVideoSelect }) => {
-  const renderedList = videos.map((videoObj, index) => {
+const VideoList = ({ videoList, onVideoSelect }) => {
+  const renderedList = videoList.map((videoObj, index) => {
     const videoId = videoObj.id.videoId ? videoObj.id.videoId : videoObj.id;
     return (
       <VideoItem
